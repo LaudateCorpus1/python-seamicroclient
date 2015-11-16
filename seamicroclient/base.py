@@ -23,6 +23,10 @@ from seamicroclient import exceptions
 from seamicroclient.openstack.common import strutils
 from seamicroclient import utils
 
+# Python 3 does not have a basestring. In that case, we use str.
+if 'basestring' not in dir(__builtins__):
+    basestring = str
+
 
 def getid(obj):
     """
