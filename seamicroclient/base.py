@@ -60,7 +60,7 @@ class Manager(utils.HookableMixin):
 
         data = body
         output = []
-        for k, v in data.iteritems():
+        for k, v in data.items():
             if data[k]:
                 if type(v) != dict:
                     output.append(obj_class(self, data, loaded=True))
@@ -70,7 +70,7 @@ class Manager(utils.HookableMixin):
 
         filtered_output = set()
         if filters is not None:
-            for k, v in filters.iteritems():
+            for k, v in filters.items():
                 for item in output:
                     if isinstance(v, basestring):
                         if v in getattr(item, k):
@@ -101,7 +101,7 @@ class Manager(utils.HookableMixin):
             return body.partition('/')[-1]
         if return_raw:
             return body
-        for k, v in body.iteritems():
+        for k, v in body.items():
             v.update({'id': k})
             return self.resource_class(self, v)
 
@@ -117,7 +117,7 @@ class Manager(utils.HookableMixin):
 
             if body == kwargs.get('action'):
                 return
-            for k, v in body.iteritems():
+            for k, v in body.items():
                 v.update({'id': k})
                 return self.resource_class(self, v)
 
